@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	long long t;
+	std::cin >> t;
+	while(t--)
+	{
+	    long long n,k;
+	    std::cin >> n>>k;
+	    long long *a=new long long[n];
+	    long long totalsum=0;
+	    for(long long i=0;i<n;i++)
+	    {
+	        std::cin >> a[i];
+	        totalsum+=a[i];
+	    }
+	    long long maxsum=INT_MIN,sum=0;
+	    for(long long i=0;i<n;i++)
+	    {
+	        sum+=a[i];
+	        if(sum>maxsum)
+	        {
+	            maxsum=sum;
+	        }
+	        if(sum<0)
+	        {
+	            sum=0;
+	        }
+	    }
+	    long long maxprefixsum=INT_MIN,prefixsum=0;
+	    for(long long i=n-1;i>=0;i--)
+	    {
+	        prefixsum+=a[i];
+	        if(prefixsum>maxprefixsum) maxprefixsum=prefixsum;
+	        
+	    }
+	    totalsum=prefixsum;
+	    long long maxsufsum=0,sufsum=0;
+	    for(long long i=0;i<n;i++)
+	    {
+	        sufsum+=a[i];
+	        if(sufsum>maxsufsum)
+	        maxsufsum=sufsum;
+	        
+	    }
+	    long long ans=0;
+	    if(k<2) cout<<maxsum<<endl;
+	    else
+	    {
+	        if(totalsum<0)
+	        cout<<max(maxsufsum+maxprefixsum,maxsum)<<endl;
+	        else
+	        cout<<max(maxsufsum+maxprefixsum+(totalsum*(k-2)),maxsum)<<endl;
+	    }
+	    
+	}
+	return 0;
+}
