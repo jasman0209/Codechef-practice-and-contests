@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+bool fun(unordered_map<ll,ll> m,ll arr[],ll n)
+{
+    for(ll i=0;i<n;i++)
+    {
+        if(arr[i]!=arr[i+1]){
+        if(m[arr[i]]==-1)
+            return false;
+        m[arr[i]]=-1;}
+    }
+    return true;
+}
+bool compare(pair<ll,ll> p1,pair<ll,ll> p2)
+{
+    return p1.second>p2.second;
+}
+int main() {
+	// your code goes here
+	    ll t;
+	    cin>>t;
+	    while(t--)
+	    {
+	        ll n;
+	        cin>>n;
+	        ll arr[n];
+	        unordered_map<ll,ll> m;
+	        for(ll i=0;i<n;i++)
+	        {
+	            cin>>arr[i];
+	            m[arr[i]]++;
+	        }
+	        vector<pair<ll,ll>> v;
+	        for(ll i=0;i<m.size();i++)
+	        {
+	            if(m[i]!=0)
+                {
+                    v.push_back(make_pair(i,m[i]));
+                }
+	        }
+	        sort(v.begin(),v.end(),compare);
+	        vector<pair<ll,ll>> ::iterator it;
+            bool flag=0;
+	        for(it=v.begin();it!=v.end();it++)
+            {
+
+                if(it->second==(it+1)->second)
+                    flag=1;
+            }
+            if(flag) cout<<"NO"<<endl;
+	        if(!flag)
+	        {
+	            if(fun(m,arr,n))
+	            {
+	                cout<<"YES"<<endl;
+	            }
+	            else
+	            {
+	                cout<<"NO"<<endl;
+	            }
+	        }
+	    }
+	return 0;
+}
