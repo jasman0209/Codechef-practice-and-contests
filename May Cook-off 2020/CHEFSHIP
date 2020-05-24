@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t; cin>>t; while(t--)
+    {
+        string s;
+        cin>>s;
+        int c=0;
+        int x=s.size();
+        for(int i=2;i<=x-2;i+=2)
+        {
+            string s1=s.substr(0,(i/2));
+            string s2=s.substr((i/2),(i/2));
+            if(s1.compare(s2)==0)
+            {
+                int z=x-i;
+                string s3=s.substr(i,z/2);
+                string s4=s.substr(i+(z/2),z/2);
+                if(s3.compare(s4)==0)
+                    c++;
+            }
+        }
+        cout<<c<<endl;
+
+    }
+    return 0;
+}
