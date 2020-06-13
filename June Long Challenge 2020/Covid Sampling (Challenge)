@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	while(tc--){
+	    ll n,p;
+	    cin>>n>>p;
+	    int x=0;
+	    vector<vector<int>> vec(n+1,vector<int>(n+1,0));
+	    ll r1=1,r2=n,c1=1,c2=n;
+	    for(ll i=r1;i<=r2;i++){
+	        for(ll j=c1;j<=c2;j++){
+	            cout<<"1"<<" "<<i<<" "<<j<<" "<<i<<" "<<j<<endl;
+	            cout.flush();
+	            int a;
+	            cin>>a;
+        	    if(a==-1)
+        	    {
+        	        exit;
+        	    }
+	            vec[i][j]=a;
+	        }
+	    }
+	    cout<<"2"<<endl;
+        for(ll i=1;i<=n;i++)
+        {
+	        for(ll j=1;j<=n;j++)
+	        {
+	            cout<<vec[i][j]<<" ";
+	            cout.flush();
+
+	        }
+	        cout<<endl;
+	        
+	    }
+	    cin>>x;
+	    if(x==-1)
+	    {
+	        exit;
+	    }
+	    else if(x==1) continue;
+	}
+	return 0;
+}
