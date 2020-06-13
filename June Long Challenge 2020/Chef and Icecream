@@ -1,0 +1,55 @@
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	std::cin >> t;
+	
+	while(t--)
+	{
+	    int n;bool flag=0;
+	    std::cin >> n;
+	    int arr[n];
+	    for(int i=1;i<=n;i++)
+	    {
+	        std::cin >> arr[i];
+	    }
+	    long c5=0,c10=0;
+	    for(int i=1;i<=n;i++)
+	    {
+	        if(!flag){
+	        if(arr[i]==5) c5++;
+	        else if(arr[i]==10) 
+	        {
+	            if(c5<=0) {flag=1;break;}
+	            else if(c5>0)
+	            {
+	                c10++;
+	                c5--;
+	            }
+	        }
+	        else if(arr[i]==15)
+	        {
+	            if(c10>=1)
+	            {c10--;
+	                
+	            }
+	            else if(c5>=2)
+	            {
+	                c5=c5-2;
+	            }
+	            else 
+	            {
+	                flag=1;
+	                break;
+	            }
+	        }
+	        }
+	    }
+	    if(flag) cout<<"NO"<<endl;
+	    else cout <<"YES"<<endl;
+	}
+	return 0;
+}
