@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	std::cin >> t;
+
+	while(t--)
+	{
+	    int count=0;
+	    string s;
+	    cin>>s;
+	    int i=0;
+	    while(i<s.length())
+	    {
+	        if(!s.substr(i,2).compare("xy")||!s.substr(i,2).compare("yx"))
+	        {
+	            count++;
+	            i+=2;
+	        }
+	        else
+	        {
+	            i++;
+	        }
+	    }
+	    cout<<count<<endl;
+	}
+	return 0;
+}
