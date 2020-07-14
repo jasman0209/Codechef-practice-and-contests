@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+typedef long long ll;
+int main() {
+	// your code goes here
+	int t;
+	std::cin >> t;
+	while(t--)
+	{
+	    ll n;
+	    std::cin >> n;
+	    unsigned long long ans=0;
+	    ll a,b;
+	    std::cin >> a;
+	    for(ll i=1;i<n;i++)
+	    {
+	        std::cin >> b;
+	        ans+=abs(b-a)-1;
+	        a=b;
+	        //cout<<ans<<" ";
+	    }
+	std::cout << ans << std::endl;
+	}
+	return 0;
+}
