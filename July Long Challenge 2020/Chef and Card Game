@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+long long sumofdigits(long long n)
+{
+    int ans=0;
+    while(n>0)
+    {
+        ans+=n%10;
+        n=n/10;
+    }
+    //cout<<ans<<endl;
+    return ans;
+}
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n;
+	    std::cin >> n;
+	    long long a,b;
+	    long long pointa=0,pointb=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        std::cin>>a>>b;
+	        if(a>=10)
+	        {
+	            a=sumofdigits(a);
+	        }
+	        if(b>=10)
+	        {
+	            b=sumofdigits(b);
+	        }
+	        if(a>b) pointa++;
+	        else if(a<b) pointb++;
+	        else
+	        {
+	            pointa++;
+	            pointb++;
+	        }
+	    }
+	    if(pointa>pointb)
+	    {
+	        cout<<"0 "<<pointa<<endl;
+	    }
+	    else if(pointa<pointb)
+	    {
+	        cout<<"1 "<<pointb<<endl;
+	    }
+	    else 
+	    {
+	        cout<<"2 "<<pointa<<endl;
+	    }
+	    
+	}
+	return 0;
+}
