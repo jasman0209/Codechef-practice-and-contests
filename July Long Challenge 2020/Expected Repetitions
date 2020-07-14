@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+#include<unordered_map>
+
+
+bool check(string s,ll end){
+    for(ll i=0,j=0;i<s.size() && j<=end;i++){
+        if(s[i] == s[j])    j++;
+        else    return false;
+        if(j>end)   j=0;
+    }
+    return true;
+}
+
+
+ll helper(string s, vl &weights){
+    ll ret = 0;
+    rep(i,0,s.size()){
+        if(check(s,i))  rep(j,0,i+1)    ret+=weights[s[j] - 'a'];
+    }
+    return ret;
+}
+
+ll power(ll x, ll y, ll m)
+{
+    if (y == 0)
+        return 1;
+    ll p = power(x, y/2, m) % m;
+    p = (p%m*p%m) % m;
+
+    return (y%2 == 0)? p : (x * p) % m;
+}
+
+int main(){
+    int test; 
+    cin>>test; 
+    while(test--)
+    {
+        string s;
+        cin>>s;
+        vector<ll> weight(26,0);
+        rep(i,0,26) cin>>weight[i];
+        unordered_map<string,ll> mymap;
+        for(ll i=0;i<s.size();i++){
+            string temp = "";
+            for(ll j=i;j<s.size();j++){
+                temp+=s[j];
+                mymap[temp]++;
+            }
+        }
+        unordered_map<string,ll> m(mymap);
+        ll num = 0;
+        for(auto i:m) num+=i.second*helper(i.ff, weight);
+        ll den = (s.size() + 1);
+        ll aaaa=s.size();
+        ll bbb=aaaa/ 2;
+        den=den*bbb;
+        den = power(den, mod - 2, mod);
+        num = num % mod;
+        ll ans = (num * den) % mod;
+        cout<<ans<<endl;
+    }
+}
+auto speed=[]() { std::ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr); return nullptr; }();
+
