@@ -1,0 +1,106 @@
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+void solve()
+{
+    ll n, x;
+        cin >> n >> x;
+        ll a[n];
+        ll x2=x;
+        for(ll i=0;i<n;i++)
+        cin>>a[i];
+        sort(a, a + n);
+
+        auto lower = lower_bound(a, a + n, x);
+        ll b[n];
+        ll i = 0;
+        ll val1=lower-a;
+        for (ll j = val1; j < n; j++) {
+            b[i] = a[j];
+            i++;
+        }
+        for (ll k = val1-1; k >= 0; k--) {
+            b[i] = a[k];
+            i++;
+        }
+
+        ll d = 0;
+        for (ll i = 0; i < n; i++) {
+            while (x < b[i]) {
+                d++;
+                x = x*2;
+            }
+            if (x >= b[i]) {
+                d++;
+                x = b[i];
+                x = x * 2;
+            }//cout<<d<<" "<<x<<" "<<b[i]<<endl;
+        }
+        
+        
+        
+        
+        
+        
+        ll d2=0;
+        for (ll k = 0; k < n;k++) {
+            while (x2 < a[k]) {
+                d2++;
+                x2 = x2*2;
+            }
+            if (x2 >= a[k]) {
+                d2++;
+                x2 = a[k];
+                x2 = x2 * 2;
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+       
+        
+        ll an=d;
+        d = 0;
+        i=0;
+        for (ll j = val1; j < n; j++) {
+            b[i] = a[j];
+            i++;
+        }
+        if(i<n)
+        {
+           for (ll k = val1-1; k >=0; k--) {
+            b[i] = a[k];
+            i++;
+        }
+        
+        
+        for (ll i = 0; i < n; i++) {
+            while (x < b[i]) {
+                d++;
+                x = x*2;
+            }
+            if (x >= b[i]) {
+                d++;
+                x = b[i];
+                x = x * 2;
+            }//cout<<d<<" "<<x<<" "<<b[i]<<endl;
+        }
+        }
+        else d=INT_MAX;
+        
+        
+        cout << min(d,min(d2,an)) <<"\n";
+
+}
+int main() {
+    ll t;
+    cin >> t;
+    while (t--) {
+     solve();
+    }
+    return 0;
+}
