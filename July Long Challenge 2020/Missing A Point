@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        set<long> x;
+        set<long> y;
+
+        long n;
+        cin>>n;
+        long long a,b;
+        for(long i=0;i<4*n-1;i++)
+        {
+           cin>>a>>b;
+           if(x.find(a)!=x.end())
+                x.erase(a);
+           else
+            x.insert(a);
+            if(y.find(b)!=y.end())
+                y.erase(b);
+           else
+            y.insert(b);
+
+        }
+
+        cout<<*x.begin()<<" "<<*y.begin();
+        cout<<endl;
+    }
+
+}
